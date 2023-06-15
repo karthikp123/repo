@@ -76,6 +76,8 @@ int main ()
     printf ("after setting the position:");
     print_binary(result);
     
+    printf("\n");
+    
     printf ("Results using function:\n");
     
     printf ("before clearing the position :");
