@@ -1,29 +1,20 @@
 #include <stdio.h>
+#include <string.h>
 
-#define IP_BUFFER_SIZE 10
+#define IP_BUFFER_SIZE 100
 
-
-int getline_count (char * buff, int max)
+int getline_count (char * buffer, int max)
 {
     char ch;
     int i=0;
     
-    while (1)
+    while ((ch = getchar()) != EOF && i < max)
     {
-        
-        ch = getchar();
-        buff [i] = ch;
-        
+        buffer [i] = ch;
         i++;
-        
-                
-        if(ch == EOF || i > max )
-        {
-            break;
-        }
-        
-        
     }
+    
+    buffer[i] = '\0';
     
     return i;
 
@@ -31,14 +22,32 @@ int getline_count (char * buff, int max)
 
 int main ()
 {
-    char array[IP_BUFFER_SIZE];
-    char * buff = array;
+    char buffer [IP_BUFFER_SIZE];
     
     int count;
     
-    count = getline_count (buff, IP_BUFFER_SIZE);
-    printf("\n");
-    printf("No of charecters:%d ", count);
+    printf ("size of array : %ld\n", sizeof(buffer));
+    count = getline_count (buffer, IP_BUFFER_SIZE);
+    printf ("\n");
+    printf ("No of charecters: %d\n", count);
+    //printf("%s\n",buffer);
+    
+    int i,ns=0,nl=0;
+    for (i=0 ; buffer[i] != '\0' ; i++)
+    {
+        if(buffer[i] == ' ')
+        {
+            ns++;
+        }
+        if(buffer[i] == '\n')
+        {
+            nl++;
+        }
+    }
+    
+    printf ("No. of lines: %d\n", nl);
+    printf ("No. of spaces: %d\n", ns);
+    
     
     return 0;
 }
