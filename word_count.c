@@ -2,6 +2,13 @@
 #include <string.h>
 
 #define IP_BUFFER_SIZE 100
+#define WORD_OUT 0
+#define WORD_IN 1
+#define IS_WHITESPACE(ch) (((ch) == ' ') || \
+                          ((ch) == '\n') || \
+                          ((ch) == '\0') ||\
+                          ((ch) == '\t'))
+
 
 int getline_count (char * buffer, int max)
 {
@@ -20,11 +27,41 @@ int getline_count (char * buffer, int max)
 
 }
 
+int word_count (char * buffer)
+{
+    int state = WORD_OUT;
+    int wc=0;
+    int index;
+    
+    for (index =0; index <=  IP_BUFFER_SIZE ; index++)
+    {
+        if (state == WORD_OUT)
+        {
+            if(IS_WHITESPACE (buffer[index]))
+            {
+                state = WORD_IN;
+            }
+        }
+        else if ( state == WORD_IN)
+        {
+            if (IS_WHITESPACE (buffer[index]))
+            {
+                wc += 1;
+                state = WORD_IN;
+            }  
+        }
+    }
+    
+    return wc;
+}
+
+
+
 int main ()
 {
     char buffer [IP_BUFFER_SIZE];
     
-    int count;
+    int count, wc;
     
     printf ("size of array : %ld\n", sizeof(buffer));
     count = getline_count (buffer, IP_BUFFER_SIZE);
@@ -48,6 +85,9 @@ int main ()
     printf ("No. of lines: %d\n", nl);
     printf ("No. of spaces: %d\n", ns);
     
-    
+    printf ("\n");
+    printf ("Word count:\n");
+    wc = word_count (buffer);
+    printf ("No. of words in the string is: %d\n",wc);   
     return 0;
 }
