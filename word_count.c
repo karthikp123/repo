@@ -33,11 +33,11 @@ int word_count (char * buffer)
     int wc=0;
     int index;
     
-    for (index =0; index <=  IP_BUFFER_SIZE ; index++)
+    for (index =0; index <=  IP_BUFFER_SIZE && buffer[index] ; index++)
     {
         if (state == WORD_OUT)
         {
-            if(IS_WHITESPACE (buffer[index]))
+            if(!IS_WHITESPACE (buffer[index]))
             {
                 state = WORD_IN;
             }
@@ -50,6 +50,10 @@ int word_count (char * buffer)
                 state = WORD_IN;
             }  
         }
+    }
+    if (state == WORD_IN)
+    {
+        wc++;
     }
     
     return wc;
