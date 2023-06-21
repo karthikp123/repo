@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "struct_node_pool_test.h"
 
-Rectangle rpool_nodes[RPOOL_SIZE];
+//Rectangle rpool_nodes[RPOOL_SIZE]; 
+Rectangle *rpool_nodes;
 Rectangle *rpool;
+
 
 void clear_node (Rectangle * node)
 {
@@ -23,6 +26,7 @@ void *init_rpool (Rectangle **rpool_pptr)
 {
     int index;
     
+    rpool_nodes = (Rectangle *)malloc(sizeof(Rectangle)*RPOOL_SIZE);
     for (index = 0; index < RPOOL_SIZE-1; index++)
     {
         clear_node (&rpool_nodes[index]);
@@ -65,6 +69,8 @@ void free_pool_node (Rectangle **rpool_pptr, Rectangle *node_ptr)
     *rpool_pptr = node_ptr;
 }
 
+
+
 int main ()
 {
     Rectangle * assigned_node;
@@ -105,6 +111,7 @@ int main ()
         
     dislay_rpool (rpool);
     
+    printf("%s",__FILE__);
     
 
     return 0;
