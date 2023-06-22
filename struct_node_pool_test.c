@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+
 #include "struct_node_pool_test.h"
 
 //Rectangle rpool_nodes[RPOOL_SIZE]; 
@@ -71,7 +70,7 @@ void free_pool_node (Rectangle **rpool_pptr, Rectangle *node_ptr)
 
 
 
-int main ()
+int struct_node_pool_test_main ()
 {
     Rectangle * assigned_node;
     Rectangle *nodes[10];
@@ -106,16 +105,31 @@ int main ()
         
     }
     dislay_rpool (rpool);
+    int ir;
+    for (ir = 8; ir > 5 ; ir-- )
+    {
+        free_pool_node (&rpool, nodes[ir]);
+    }
     
-    free_pool_node (&rpool, nodes[9]);
         
     dislay_rpool (rpool);
     
-    printf("%s",__FILE__);
+    printf("%s\n",__TIME__);
+    printf("%s\n",__FILE__);
+    printf("%d\n",__LINE__);
+    printf("%s\n",__DATE__);
     
 
     return 0;
 }
 
+#ifndef RELOCATABLE_OBJ
+int main ()
+{
+    struct_node_pool_test_main ();
+}
+#endif //RELOCATABLE_OBJ
+ 
+ 
 
 

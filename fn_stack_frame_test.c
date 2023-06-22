@@ -85,8 +85,15 @@ int violet (int a, int b)
     return c;
 }
 
-int main (int argc, char * argv[])
+int fn_stack_frame_main ()
 {
     int a = violet (1,2);
     return 0;
 };
+
+#ifndef RELOCATABLE_OBJ
+int main ()
+{
+    fn_stack_frame_main ();
+}
+#endif //RELOCATABLE_OBJ

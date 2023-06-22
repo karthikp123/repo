@@ -82,7 +82,7 @@ char state_transitions (int number, char cur_state)
     return state;
 }
 
-int main ()
+int state_transition_main ()
 {
 
     char state;
@@ -105,3 +105,10 @@ int main ()
     
     return 0;
 }
+
+#ifndef RELOCATABLE_OBJ
+int main ()
+{
+    state_transition_main ();
+}
+#endif //RELOCATABLE_OBJ

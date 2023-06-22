@@ -1,6 +1,9 @@
 #ifndef _STRUCT_HEADER_
 #define _STRUCT_HEADER_
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #define VTX_CNT 4
 #define DESC_SIZE 31
 #define RPOOL_SIZE 512 
@@ -22,5 +25,12 @@ typedef struct Rectangle_t
     
 
 }Rectangle;
+
+extern void clear_node (Rectangle *);
+extern void *init_rpool (Rectangle **);
+extern void dislay_rpool (Rectangle *);
+extern Rectangle *alloc_pool_node (Rectangle **);
+extern void free_pool_node (Rectangle **, Rectangle *);
+extern int struct_node_pool_test_main ();
 
 #endif // _STRUCT_HEADER_

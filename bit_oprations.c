@@ -46,7 +46,7 @@ void print_binary (int number)
     printf("%d, %x, %s\n",temp, temp, binary_str);
 }
 
-int main ()
+int bit_operation_main ()
 {
     int number;
     int position;
@@ -101,3 +101,11 @@ int main ()
     
     return 0;
 }
+
+#ifndef RELOCATABLE_OBJ
+int main ()
+{
+    bit_operation_main ();
+}
+#endif //RELOCATABLE_OBJ
+

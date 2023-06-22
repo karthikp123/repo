@@ -1,13 +1,6 @@
 //This file contains some utility functions.
 
-#include <stdio.h>
-#include <string.h>
-
-#define MAX_SIZE 30
-
-#define ASCI_DIFF(x,y) (((x) > (y)) ? ((x) - (y)) : ((y) - (x))) 
-#define UPPER(c) ((((c) >= 'a') && (c <= 'z'))?((c) - ASCI_DIFF('a','A')) : c)
-#define LOWER(c) ((((c) >= 'A') && (c <= 'Z'))?((c) + ('a' - 'A')) : c)
+#include "utilities.h"
 
 int asci_to_int (char * str)
 {
@@ -183,7 +176,65 @@ char *string_cat (char * str1, char * str2)
     return str;
 }
 
-int main ()
+//This function is used in the c often to clear the set of memory.
+//for example whole structure can be set to zero using this small function.
+char *mem_set (char * ptr, char c, int size)
+{
+    if (!ptr)
+    {
+        printf("Invalid string");
+        return NULL;
+    }
+    
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        *ptr = c;
+         ptr++;
+    }
+}
+
+int string_length (char * str)
+{
+if (!str)
+    {
+        printf("Invalid string");
+        return NULL;
+    }
+    
+    int count;
+    count =0;
+    while (str[count] != '\0')
+    {
+        count++;
+    }
+    
+    return count;
+}
+
+char * string_reverse (char * str)
+{
+    if (!str)
+    {
+        printf("Invalid string");
+        return NULL;
+    }
+    
+    int string_len;
+    string_len = string_length (str);
+    int i,j;
+    char temp;
+    for (i = 0, j = string_len-1 ; i < j; i++, j--)
+    {
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+        
+    }
+}
+
+
+int utilities_main ()
 {
     char str[MAX_SIZE];
     int number;
@@ -243,5 +294,29 @@ int main ()
     concat_result = string_cat (str1,str2);
     printf("The cancatinated string is: %s\n", concat_result);
     
+    //memset
+    char memset_str[10];
+    mem_set (memset_str, 0 , sizeof(memset_str));
+    printf ("%s\n",memset_str);
+    
+    //string length
+    int l = string_length ("kartik_p");
+    printf("%d\n",l);
+
+    //strint reverse
+    char reverse_str[30]= "k";
+    char *revstr;
+    printf ("passed string: %s\n",reverse_str);
+    string_reverse (reverse_str);
+    printf ("Reversed string: %s\n", reverse_str);
+    
+    
     return 0;
 }
+
+#ifndef RELOCATABLE_OBJ
+int main ()
+{
+   utilities_main();
+}
+#endif // RELOCATABLE_OBJ

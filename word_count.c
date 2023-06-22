@@ -61,7 +61,7 @@ int word_count (char * buffer)
 
 
 
-int main ()
+int word_count_main ()
 {
     char buffer [IP_BUFFER_SIZE];
     
@@ -95,3 +95,11 @@ int main ()
     printf ("No. of words in the string is: %d\n",wc);   
     return 0;
 }
+
+#ifndef RELOCATABLE_OBJ
+int main ()
+{
+    
+    word_count_main ();
+}
+#endif //RELOCATABLE_OBJ
