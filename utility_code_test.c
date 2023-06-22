@@ -239,12 +239,16 @@ int utilities_main ()
     char str[MAX_SIZE];
     int number;
     
+    printf ("\n");
+    printf ("String to integer conversion:\n");
     printf ("enter the string number: ");
-    gets (str);
-    
+    scanf ("%s",str);
     number = asci_to_int (str);
+    printf ("\n");
     printf ("the number is: %d\n", number);
+    printf ("\n");
     
+    printf ("charecter upper and lower functions:\n");
     char chr;
     char result;
     printf("Enter the charecter to be converted to upper or lower:\n");
@@ -253,15 +257,21 @@ int utilities_main ()
     
     printf ("To upper: %c\n",result);
     printf("To lower: %c\n", to_lower(result));
-    //printf ("upper to lower difference %d\n", ASCI_DIFF('a','A'));
+    
     printf ("Macro result: To upper = %c\n", UPPER(chr));
     printf ("Macro result: To lower = %c\n", LOWER(result));
+    printf ("\n");
+    
+    printf ("string Toupper and Tolower functions:\n");
     char string[30] = "karthik";
+    printf ("Input string : %s", string);
     string_to_upper (string);   
     printf ("Strint to upper reslult: %s\n", string);
     string_to_lower(string);
     printf ("String to lower result: %s\n", string);
+    printf ("\n");
     
+    printf ("String copy function;\n");
     int size;
     char dest[MAX_SIZE];
     char src[MAX_SIZE];
@@ -269,9 +279,11 @@ int utilities_main ()
     scanf ("%s",src);
     string_copy (dest,src);
     printf ("String copy :copied string in destination: %s\n", dest);
+    printf ("\n");
+    
+    printf ("Memory copy function:\n");
     printf ("Enter the size of the memory to be copied : ");
     scanf ("%d",&size);
-    
     mem_copy(dest,src,size);
     int index;
     printf ("Memory copy: copied result to desitnatination: ");
@@ -280,10 +292,13 @@ int utilities_main ()
         printf("%c",dest[index]);
     }
     printf ("\n");
-    printf ("printing the hex values of the memory\n");
+    printf ("\n");
+    
+    printf ("printing the hex values of the memory:\n");
     print_memory (src,30);
+    printf ("\n");
     
-    
+    printf ("String concat function:\n");
     char str1[30];
     char str2[30];
     char *concat_result;
@@ -293,6 +308,7 @@ int utilities_main ()
     scanf ("%s",str2);
     concat_result = string_cat (str1,str2);
     printf("The cancatinated string is: %s\n", concat_result);
+    printf ("\n");
     
     //memset
     char memset_str[10];
@@ -300,13 +316,13 @@ int utilities_main ()
     printf ("%s\n",memset_str);
     
     //string length
-    int l = string_length ("kartik_p");
-    printf("%d\n",l);
+    //int l = string_length ("kartik_p");
+    //printf("%d\n",l);
 
     //strint reverse
-    char reverse_str[30]= "k";
-    char *revstr;
-    printf ("passed string: %s\n",reverse_str);
+    printf ("String riverse:\n");
+    char reverse_str[30]= "karthikp";
+    printf ("Input string: %s\n",reverse_str);
     string_reverse (reverse_str);
     printf ("Reversed string: %s\n", reverse_str);
     
@@ -317,6 +333,7 @@ int utilities_main ()
 #ifndef RELOCATABLE_OBJ
 int main ()
 {
+
    utilities_main();
 }
 #endif // RELOCATABLE_OBJ

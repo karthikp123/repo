@@ -81,11 +81,7 @@ int struct_node_pool_test_main ()
     
     init_rpool (&rpool);
     dislay_rpool (rpool);
-    
-    rpool->id = 10;
-    
-    //assigned_node = alloc_pool_node (&rpool);
-    //printf("%d\n",assigned_node->id);
+    printf ("\n");
     
     int i;
     /*for (i=0; i < 10; i++)
@@ -104,6 +100,8 @@ int struct_node_pool_test_main ()
         }
         
     }
+    printf ("\n");
+    printf ("After allocating 10 nodes:\n");
     dislay_rpool (rpool);
     int ir;
     for (ir = 8; ir > 5 ; ir-- )
@@ -111,13 +109,17 @@ int struct_node_pool_test_main ()
         free_pool_node (&rpool, nodes[ir]);
     }
     
-        
+    printf ("After freeing 3 nodes:\n");
     dislay_rpool (rpool);
     
-    printf("%s\n",__TIME__);
-    printf("%s\n",__FILE__);
-    printf("%d\n",__LINE__);
-    printf("%s\n",__DATE__);
+    printf ("\n");
+    
+    printf ("Printing the predifined preprocessors\n");
+    
+    printf("time (__TIME__): %s\n",__TIME__);
+    printf("file (__FILE__): %s\n",__FILE__);
+    printf("line (__LINE__): %d\n",__LINE__);
+    printf("date (__DATE__): %s\n",__DATE__);
     
 
     return 0;

@@ -8,8 +8,9 @@ double red (int *i, char *str, int *array)
     double c = 2.0;
     printf("Running Red Function\n");
     
-    char * ptr = (char *) 0X123;
-    printf("%s\n", ptr);
+    //This below syntax is to forcefully do the segmentation fault.
+    /*char * ptr = (char *) 0X123;
+    printf("%s\n", ptr);*/
 
     return c;
 }
@@ -20,7 +21,7 @@ int orange (char *str, int b, float c)
     double value;
     int arr[10]= {1,2,3};
 
-   // printf ("Running Orange Function\n");
+    printf ("Running Orange Function\n");
     value = red (&d, "karthi",arr);
     return d;
 }

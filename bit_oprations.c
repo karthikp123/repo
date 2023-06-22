@@ -66,8 +66,8 @@ int bit_operation_main ()
     
     
     
-    printf("\n");
-    printf("\n");
+    printf ("\n");
+    printf ("\n");
     
     
     printf("before setting the position: ");
@@ -88,15 +88,18 @@ int bit_operation_main ()
     
     
     
-    printf("\n");
-    printf("\n");
+    printf ("\n");
+    printf ("\n");
     
     
-    printf("before setting the position: ");
-    print_binary(result);
-    result = set_bit(result,position);
+    printf ("before setting the position: ");
+    print_binary (result);
+    result = set_bit (result,position);
     printf ("after setting the position:");
-    print_binary(result);
+    print_binary (result);
+    
+    printf ("\n");
+    printf ("\n");
     
     
     return 0;
