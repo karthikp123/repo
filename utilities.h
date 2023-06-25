@@ -23,6 +23,6 @@ extern char *mem_set (char *, char, int);
 extern int string_length (char *);
 extern char * string_reverse (char *);
 extern int utilities_main ();
-
+extern char * trim_simple (char *);
 
 #endif //_UTILITIES_H_

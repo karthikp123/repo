@@ -7,12 +7,12 @@ extern int bit_operation_main ();
 extern int bit_operations_2_main ();
 extern int var_length_test_main ();
 extern int word_count_main ();
-
+extern int binary_search_test_main ();
 
 int main()
 {
 	int ch;
-	printf("1.state_transition\n2.Function stack frame:\n3.Bit operations:\n4.Node pool test\n5.Utilities function\n6.word count\n7.varibale length test\n");
+	printf("1.state_transition\n2.Function stack frame:\n3.Bit operations:\n4.Node pool test\n5.Utilities function\n6.word count\n7.varibale length test\n8.binary serach test\n");
 	printf("Enter choice:\n");
 	scanf("%d", &ch);
 	
@@ -44,7 +44,9 @@ int main()
 		case 7:
 			var_length_test_main ();
 			break;
-			
+		case 8:
+			binary_search_test_main ();
+			break;
 		default:
 			printf("Invalid choice!!\n");
 			break;

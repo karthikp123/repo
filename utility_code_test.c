@@ -2,6 +2,8 @@
 
 #include "utilities.h"
 
+#define ISSPACE(c) (c == ' ' || c == '\t' || c == '\n')
+
 int asci_to_int (char * str)
 {
     int num;
@@ -233,6 +235,71 @@ char * string_reverse (char * str)
     }
 }
 
+/*void trim (char * str)
+{
+    int first_index, last_index,i,j;
+    first_index = -1;
+    last_index = -1;
+    
+    
+    for (i=0; str[i] != '\0' && (str[i] == ' ' || str[i] == '\t'); i++)
+    {
+        first_index = i;
+        
+    }
+    first_index = i;
+    printf ("forst index: %d\n",first_index);
+    
+    for (i=first_index; str[i] != '\0'; i++ )
+    {
+        if (str[i] != ' ' && str[i] != '\t')
+            last_index = i;
+    }
+    last_index = i;
+    printf ("last index: %d\n",last_index);
+    
+    for (i=first_index, j=0; i <= last_index; i++, j++)
+    {
+        str[j] = str[i];
+    }
+    
+    str[j] = '\0';
+}*/
+
+char * trim_simple (char * str)
+{
+    int f_index = -1;
+    int l_index = -1;
+    int i;
+    
+    if (!str)
+    {
+        printf ("Invalid pointer");
+        return NULL;
+    }
+     
+     for (i = 0; str[i] != '\0'; i++ )
+     {
+         if (!(ISSPACE(str[i])))
+         {
+             if (f_index ==-1)
+             {
+                 f_index = i;
+             }
+             
+             l_index = i;
+         }
+     }
+     
+     for (i = 0; f_index <= l_index; i++, f_index++)
+     {
+         str[i] = str[f_index];
+     }
+     
+     str[i] = '\0';
+     
+     return str;
+}
 
 int utilities_main ()
 {
@@ -325,7 +392,15 @@ int utilities_main ()
     printf ("Input string: %s\n",reverse_str);
     string_reverse (reverse_str);
     printf ("Reversed string: %s\n", reverse_str);
+    printf ("\n");
     
+    //trim function
+    printf ("trim function:\n");
+    char trim_str[30];
+    printf ("enter the string:\n");
+    gets(trim_str);
+    char * trim_result = trim_simple (trim_str);
+    printf ("after trimmig:%s", trim_result);
     
     return 0;
 }
