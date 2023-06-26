@@ -3,6 +3,10 @@
 #include "utilities.h"
 
 #define ISSPACE(c) (c == ' ' || c == '\t' || c == '\n')
+#define BIG_ENDIAN 1
+#define LITTLE_ENDIAN 2
+#define IS_BIGENDIAN (get_endian() == BIG_ENDIAN)
+#define IS_LITTLEENDIAN (get_endian() == LITTLE_ENDIAN)
 
 int asci_to_int (char * str)
 {
@@ -53,6 +57,19 @@ int asci_to_int (char * str)
     }
     
     return num*(sign);
+}
+
+void get_line (char * str, int max)
+{
+    char c;
+    int i;
+    i = 0;
+    while ((c = getchar() ) != '\n' && i < max)
+    {
+        str[i] = c;
+        i++;
+    }
+    str[i] = '\0';
 }
 
 
@@ -301,6 +318,62 @@ char * trim_simple (char * str)
      return str;
 }
 
+int get_endian()
+{
+    int int_val = 0x1A2B3C4D;
+    char *chr_ptr = (char *) &int_val;
+    
+    if ((*chr_ptr) == 0x4d)
+    {
+        return LITTLE_ENDIAN;
+    }
+    else
+    {
+        return BIG_ENDIAN;
+    }
+}
+
+int string_cmp (char *s, char * t)
+{
+    int i,res;
+    for (i = 0; s[i] == t[i]; i++)
+    if (s[i] == '\0')
+    {
+        return 0;
+    }
+    res= s[i]-t[i];
+    return res > 0 ? 1 : -1;
+}
+
+char * str_search (char *str, char * key)
+{
+    int i,index;
+    static char res[30] = "";
+    for ( i = 0; str[i] != '\0'; i++)
+    {
+    	
+        for (int j = 0; str[i] == key[j]; j++)
+        {
+            
+            if (j == 0)
+            {
+                index = i;
+            }
+            res[j] = str[i];
+            
+            if (key[j+1] == '\0')
+            {
+                res[j+1] = '\0';
+                return res;
+            }
+            
+            i++;
+            
+        }
+    }
+    return NULL;
+}
+
 int utilities_main ()
 {
     char str[MAX_SIZE];
@@ -370,9 +443,9 @@ int utilities_main ()
     char str2[30];
     char *concat_result;
     printf ("string 1 input: ");
-    scanf ("%s",str1);
+    get_line (str1, sizeof(str1));
     printf ("string 2 input: ");
-    scanf ("%s",str2);
+    get_line (str2, sizeof(str2));
     concat_result = string_cat (str1,str2);
     printf("The cancatinated string is: %s\n", concat_result);
     printf ("\n");
@@ -398,9 +471,59 @@ int utilities_main ()
     printf ("trim function:\n");
     char trim_str[30];
     printf ("enter the string:\n");
-    gets(trim_str);
+    get_line(trim_str, sizeof(trim_str));
     char * trim_result = trim_simple (trim_str);
-    printf ("after trimmig:%s", trim_result);
+    printf ("after trimmig:%s\n", trim_result);
+    printf ("\n");
+    
+    //check big endian or little endian
+    if (IS_BIGENDIAN)
+    {
+        printf ("it is a big endian function\n");
+    }
+    else if (IS_LITTLEENDIAN)
+    {
+        printf ("it is a little endian\n");
+    }
+    
+    //string compare
+    printf ("string compare function:\n");
+    char compare_s1[30]="karthi", compare_s2[30] = "karthi";
+    int compare_result;
+    
+    printf ("enter the string: ");
+    scanf ("%s",compare_s1);
+    printf ("enter the string2: ");
+    scanf ("%s",compare_s2);
+    compare_result = string_cmp (compare_s1, compare_s2);
+    if (compare_result == 0)
+    {
+        printf ("%d : comapre successfull\n", compare_result);
+    }
+    else
+    {
+        printf ("%d : comapre unsuccessfull\n", compare_result);
+    }
+    printf ("\n");
+    
+    //string search
+    printf ("string search function:\n");
+    char search_source[30], search_key[30];
+    char *search_result;
+    printf ("enter the string: ");
+    scanf("%s", search_source);
+    printf ("enter the string to search: ");
+    scanf("%s",search_key);
+    search_result = str_search (search_source, search_key);
+    if(search_result == NULL)
+    {
+        printf ("no mathch found\n");
+    }
+    else
+    {
+        printf ("match found: %s\n",search_result);
+    }
+    
     
     return 0;
 }
