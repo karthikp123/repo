@@ -1,4 +1,5 @@
-
+extern "C"
+{
 #include "struct_node_pool_test.h"
 
 //Rectangle rpool_nodes[RPOOL_SIZE]; 
@@ -132,6 +133,6 @@ int main ()
 }
 #endif //RELOCATABLE_OBJ
  
- 
+}
 
 

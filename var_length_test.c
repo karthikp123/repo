@@ -1,5 +1,6 @@
 /*This file is to demostrate the variable amount of arguments as input*/
-
+extern "C"
+{
 #include <stdarg.h>
 #include  <stdio.h>
 
@@ -36,3 +37,4 @@ int var_length_test_main ()
      var_length_test_main ();
  }
  #endif //RELOCATABLE_OBJ
+ }

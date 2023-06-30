@@ -1,9 +1,11 @@
 /*This file has the has the operations to get n number of bits from lsb, msb or from the midle.*/
 
+extern "C"
+{
 #include <stdio.h>
 //extern void print_binary (int number);
 
-/*void print_binary (int number)
+void print_binary (int number)
 {
     int temp = number;
     char binary_str[33] = {0};
@@ -25,7 +27,7 @@
     binary_str[32] = '\0';
     
     printf("%d, %x, %s\n",temp, temp, binary_str);
-}*/
+}
 
 
 unsigned int get_bit_msb (int num, int pos_count)
@@ -137,4 +139,6 @@ int main ()
     bit_operations_2_main ();
 }
 #endif //RELOCATABLE_OBJ
+
+}
 

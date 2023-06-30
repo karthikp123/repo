@@ -26,4 +26,7 @@ extern int utilities_main ();
 extern char * trim_simple (char *);
 extern void get_line (char * str, int max);
 
+
+
+
 #endif //_UTILITIES_H_

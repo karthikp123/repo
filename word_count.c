@@ -1,3 +1,6 @@
+extern "C"
+{
+
 #include <stdio.h>
 #include <string.h>
 
@@ -103,3 +106,5 @@ int main ()
     word_count_main ();
 }
 #endif //RELOCATABLE_OBJ
+
+}

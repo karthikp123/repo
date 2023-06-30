@@ -1,3 +1,6 @@
+extern "C"
+{
+
 #include <stdio.h>
 
 int g_myglobal_var;
@@ -98,3 +101,5 @@ int main ()
     fn_stack_frame_main ();
 }
 #endif //RELOCATABLE_OBJ
+
+}

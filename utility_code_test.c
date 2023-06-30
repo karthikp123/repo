@@ -1,5 +1,9 @@
 //This file contains some utility functions.
 
+extern "C"
+{
+
+
 #include "utilities.h"
 
 #define ISSPACE(c) (c == ' ' || c == '\t' || c == '\n')
@@ -382,7 +386,7 @@ int utilities_main ()
     printf ("\n");
     printf ("String to integer conversion:\n");
     printf ("enter the string number: ");
-    scanf ("%s",str);
+    get_line (str, sizeof(str));
     number = asci_to_int (str);
     printf ("\n");
     printf ("the number is: %d\n", number);
@@ -535,3 +539,5 @@ int main ()
    utilities_main();
 }
 #endif // RELOCATABLE_OBJ
+
+}

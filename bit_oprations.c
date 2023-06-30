@@ -1,4 +1,8 @@
 /* This code tests the the set bit and clear bit operarions. */
+
+extern "C"
+{
+
 #include <stdio.h>
 
 #define SET_BIT(no,pos) ((no) = (no) | ((0X01) << (pos)))
@@ -22,7 +26,7 @@ int clear_bit (int number, int position)
     return result;
 }
 
-void print_binary (int number)
+void print_binary_1 (int number)
 {
     int temp = number;
     char binary_str[33] = {0};
@@ -59,10 +63,10 @@ int bit_operation_main ()
     printf ("Results using Macro:\n");
     
     printf ("before clearing the position :");
-    print_binary(number);
+    print_binary_1(number);
     result = CLEAR_BIT(number, position);
     printf("after the clearing the bit: ");
-    print_binary(result);
+    print_binary_1(result);
     
     
     
@@ -71,20 +75,20 @@ int bit_operation_main ()
     
     
     printf("before setting the position: ");
-    print_binary(result);
+    print_binary_1(result);
     result = SET_BIT(result,position);
     printf ("after setting the position:");
-    print_binary(result);
+    print_binary_1(result);
     
     printf("\n");
     
     printf ("Results using function:\n");
     
     printf ("before clearing the position :");
-    print_binary(number);
+    print_binary_1(number);
     result = clear_bit(number, position);
     printf("after the clearing the bit: ");
-    print_binary(result);
+    print_binary_1(result);
     
     
     
@@ -93,10 +97,10 @@ int bit_operation_main ()
     
     
     printf ("before setting the position: ");
-    print_binary (result);
+    print_binary_1 (result);
     result = set_bit (result,position);
     printf ("after setting the position:");
-    print_binary (result);
+    print_binary_1 (result);
     
     printf ("\n");
     printf ("\n");
@@ -112,3 +116,4 @@ int main ()
 }
 #endif //RELOCATABLE_OBJ
 
+}

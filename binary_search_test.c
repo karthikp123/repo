@@ -1,3 +1,7 @@
+
+
+extern "C"
+{
 #include <stdio.h>
 
 #define ARRAY_SIZE 10
@@ -109,4 +113,6 @@ int main ()
     return 0;
 }
 #endif //RELOCATABLE_OBJ
+
+}
 

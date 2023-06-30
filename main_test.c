@@ -1,6 +1,10 @@
+
+
+extern "C"
+{
+
 #include "utilities.h"
 #include "struct_node_pool_test.h"
-
 extern int state_transition_main ();
 extern int fn_stack_frame_main ();
 extern int bit_operation_main ();
@@ -9,7 +13,7 @@ extern int var_length_test_main ();
 extern int word_count_main ();
 extern int binary_search_test_main ();
 
-int main()
+int main_test_main()
 {
 	int ch;
 	printf("1.state_transition\n2.Function stack frame:\n3.Bit operations:\n4.Node pool test\n5.Utilities function\n6.word count\n7.varibale length test\n8.binary serach test\n");
@@ -56,4 +60,13 @@ int main()
 	
 	return 0;
 	
+}
+
+#ifndef RELOCATABLE_OBJ
+
+int main ()
+{
+    main_test_main();
+}
+#endif //RELOCATABLE_OBJ
 }

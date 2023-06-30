@@ -1,3 +1,6 @@
+extern "C"
+{
+
 #include <stdio.h>
 
 #define STATE_A ('A')
@@ -112,3 +115,5 @@ int main ()
     state_transition_main ();
 }
 #endif //RELOCATABLE_OBJ
+
+}
