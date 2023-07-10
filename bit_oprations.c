@@ -5,8 +5,8 @@ extern "C"
 
 #include <stdio.h>
 
-#define SET_BIT(no,pos) ((no) = (no) | ((0X01) << (pos)))
-#define CLEAR_BIT(no, pos) ((no) = (no) & (~((0X01) << (pos))))
+#define SET_BIT(no,pos) ((no) | ((0X01) << (pos)))
+#define CLEAR_BIT(no, pos) ((no) & (~((0X01) << (pos))))
 
 int set_bit (int number, int position)
 {

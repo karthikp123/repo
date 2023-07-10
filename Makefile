@@ -16,16 +16,17 @@ create_rel_obj:
 	$(CPP_COMPILER) $(CMPLN_FLAG) -DRELOCATABLE_OBJ binary_search_test.c -o binary_search_test.o
 	$(CPP_COMPILER) $(CMPLN_FLAG) -DRELOCATABLE_OBJ oop_concept_test.cpp -o oop_concept_test.o
 	$(CPP_COMPILER) $(CMPLN_FLAG) -DRELOCATABLE_OBJ mangling_test.cpp -o mangling_test.o
+	$(CPP_COMPILER) $(CMPLN_FLAG) -DRELOCATABLE_OBJ binary_bitwise.cpp -o binary_bitwise.o
 	$(CPP_COMPILER) $(CMPLN_FLAG)  main_test.c -o main_test.o
 
-regular_elf_exec: struct_node_pool_test.h utilities.h
-	g++ -g bit_operations_2.o bit_oprations.o fn_stack_frame_test.o state_transition_file.o struct_node_pool_test_file.o utility_code_test_file.o word_count_file.o var_length_test_file.o binary_search_test.o oop_concept_test.o mangling_test.o  main_test.o -o finalmain
+regular_elf_exec: struct_node_pool_test.h utilities.h binary_bitwise.h
+	g++ -g bit_operations_2.o bit_oprations.o fn_stack_frame_test.o state_transition_file.o struct_node_pool_test_file.o utility_code_test_file.o word_count_file.o var_length_test_file.o binary_search_test.o oop_concept_test.o mangling_test.o binary_bitwise.o  main_test.o -o finalmain
 
 static_lib: create_rel_obj
-	ar -rc libMyTestStaticLib.a bit_operations_2.o bit_oprations.o fn_stack_frame_test.o state_transition_file.o struct_node_pool_test_file.o utility_code_test_file.o word_count_file.o var_length_test_file.o binary_search_test.o oop_concept_test.o mangling_test.o
+	ar -rc libMyTestStaticLib.a bit_operations_2.o bit_oprations.o fn_stack_frame_test.o state_transition_file.o struct_node_pool_test_file.o utility_code_test_file.o word_count_file.o var_length_test_file.o binary_search_test.o oop_concept_test.o mangling_test.o binary_bitwise.o
 
 shared_lib: create_rel_obj
-	g++ -shared -o libMyTestSharedLib.so bit_operations_2.o bit_oprations.o fn_stack_frame_test.o state_transition_file.o struct_node_pool_test_file.o utility_code_test_file.o word_count_file.o var_length_test_file.o binary_search_test.o oop_concept_test.o mangling_test.o
+	g++ -shared -o libMyTestSharedLib.so bit_operations_2.o bit_oprations.o fn_stack_frame_test.o state_transition_file.o struct_node_pool_test_file.o utility_code_test_file.o word_count_file.o var_length_test_file.o binary_search_test.o oop_concept_test.o mangling_test.o binary_bitwise.o
 	
 
 elf_exec_using_static_lib: static_lib
