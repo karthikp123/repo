@@ -282,7 +282,7 @@ void Stack::display ()
 	
 	while (ptr != NULL)
 	{
-		cout << "Node No. "<< i<<endl;
+		cout << "Node No. "<< i <<endl;
 		ptr->display();
 		ptr = ptr->getDataNext();
 		cout << endl;
@@ -299,10 +299,10 @@ int main ()
 	
 	Stack stack;
 	stack.push(20);
-	stack.push("karthi");
-	stack.push("snajay");
-	stack.push("varun");
-	stack.push("sumith");
+	//stack.push("karthi");
+	//stack.push("snajay");
+	//stack.push("varun");
+	//tack.push("sumith");
 	stack.push(30);
 	stack.push(40);
 	stack.pushMemory(10);
@@ -323,7 +323,7 @@ int main ()
 	
 	//stack.push("adithya");
 	stack.push(50);
-	//stack.push("karthi");
+	stack.push("karthi");
 	
 	//stack.display();
 	
